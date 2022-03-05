@@ -1,0 +1,8 @@
+[package]
+name = "wildfire"
+version = "0.0.0"
+edition = "2021"
+authors = ["StarkProgrammer <https://github.com/StarkBotsIndustries>"]
+repository = "https://github.com/StarkBotsIndustries/rust-utils"
+description = "Personal Utils"
+license = "GPL-3.0-or-later"
