@@ -1,7 +1,5 @@
-### Personal Utils in Rust
+### Personal Utils for Rust Projects
 
-`v0.0.0` is just a placeholder for future.
+These are some utils I created for my personal use-cases. They are personalized, by which I mean, they have no public use-case whatsoever. Well, you can still star ;) but don't waste your time trying to figure out things you have in mind.
 
-Future versions can have more utils for personal use-cases in Rust projects.
-
-**Note**: Not meant for public use.
+Not meant for public use.
