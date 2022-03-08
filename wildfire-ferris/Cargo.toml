@@ -1,12 +1,14 @@
 [package]
 name = "wildfire-ferris"
-version = "0.0.0"
+version = "0.0.1"
 edition = "2021"
 description = "Personal add-on to Ferrisgram"
 license = "GPL-3.0-or-later"
+repository = "https://github.com/StarkBotsIndustries/rust-utils"
 
 [dependencies]
 ferrisgram = "0.1.0"
 tokio = "1.17.0"
 dotenv = "0.15.0"
 lazy_static = "1.4.0"
+wildfire = "0.0.0"

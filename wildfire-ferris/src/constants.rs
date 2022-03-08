@@ -23,7 +23,7 @@ lazy_static::lazy_static! {
                 help = "#".to_string()
             },
         };
-        "<b>Available Commands</b>\n\n{}\n/start - Start the Bot \n/help - Help Message \n/about - About this bot".replace("{}", &help)
+        "<b>Available Commands</b>\n{}".replace("{}", &help)
     };
     pub static ref ABOUT: String = {
         let about;

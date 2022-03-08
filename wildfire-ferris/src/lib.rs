@@ -11,6 +11,7 @@ use ferrisgram::ext::handlers::{CallbackQueryHandler, CommandHandler};
 use ferrisgram::ext::Dispatcher;
 use ferrisgram::ext::Updater;
 use ferrisgram::Bot;
+use std::collections::BTreeMap;
 
 pub async fn init_bot() -> Bot {
     dotenv().ok();
@@ -47,11 +48,14 @@ pub fn default_handlers<'a>(dispatcher: &'a mut Dispatcher<'a>) -> &'a mut Dispa
 
 type HandlersFunc = fn(&mut Dispatcher) -> ();
 
-pub async fn run(func: HandlersFunc) {
+pub async fn run(func: HandlersFunc, dict: &mut BTreeMap<&str, &str>) {
     let bot = init_bot().await;
+    println!("Starting...");
+    utils::commands(dict, &bot).await;
     let dispatcher = &mut Dispatcher::new(&bot);
     let dispatcher = default_handlers(dispatcher);
     func(dispatcher);
     let mut updater = Updater::new(&bot, dispatcher);
+    println!("{} is now running...", bot.clone().user.username.unwrap());
     updater.start_polling(true).await.ok();
 }

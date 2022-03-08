@@ -2,7 +2,9 @@ use ferrisgram::error::Error;
 use ferrisgram::error::GroupIteration;
 use ferrisgram::error::GroupIteration::ContinueGroups;
 use ferrisgram::ext::Context;
+use ferrisgram::types::BotCommand;
 use ferrisgram::Bot;
+use std::collections::BTreeMap;
 use std::env;
 
 extern crate lazy_static;
@@ -76,11 +78,28 @@ pub fn error_handler(bot: &Bot, _: &Context, err: Error) -> GroupIteration {
     ContinueGroups
 }
 
-pub fn info(start: &str, link: &str, about: Option<&str>) {
-    std::env::set_var("START_MESSAGE", start);
-    match about {
-        Some(a) => std::env::set_var("ABOUT_MESSAGE", a),
-        None => std::env::set_var("ABOUT_MESSAGE", start),
+pub fn info(work: &str, link: &str, about: &str) {
+    env::set_var("START_MESSAGE", work);
+    env::set_var("ABOUT_MESSAGE", about);
+    env::set_var("LINK_MESSAGE", link);
+}
+
+pub async fn commands(dict: &mut BTreeMap<&str, &str>, bot: &Bot) {
+    let mut cmds = vec![];
+    let mut string = "".to_string();
+    dict.insert("start", "Start The Bot");
+    dict.insert("help", "Get Help");
+    dict.insert("about", "About The Bot");
+    for (key, value) in dict.iter().rev() {
+        string.push_str(format!("\n/{} - {}", key, value).as_str());
+        cmds.push(BotCommand {
+            command: key.to_string(),
+            description: value.to_string(),
+        });
     }
-    std::env::set_var("LINK_MESSAGE", link);
+    env::set_var("HELP_MESSAGE", string);
+    match bot.set_my_commands(cmds).send().await {
+        Ok(_) => println!("Commands Set!"),
+        Err(err) => println!("Couldn't set commands, {err}"),
+    };
 }
