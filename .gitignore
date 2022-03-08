@@ -1,3 +1,7 @@
-/.idea
-/target
+.idea
+.vscode
+target
 Cargo.lock
+.env
+wildfire-try
+wildfire-cli
