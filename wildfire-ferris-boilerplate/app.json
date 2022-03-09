@@ -1,0 +1,38 @@
+{
+    "name": "{NAME} Bot",
+    "description": "Telegram bot to do {WORK}",
+    "logo": "https://telegra.ph//file/26b874af7da1c2a54e70b.jpg",
+    "keywords": [
+      "telegram",
+      "bot",
+      "rust",
+      "rust-lang"
+    ],
+      "buildpacks": [{
+      "url": "https://github.com/StarkBotsIndustries/heroku-buildpack-rust"
+    }],
+    "formation": {
+      "worker": {
+        "quantity": 1,
+        "size": "free"
+      }
+    },
+    "addons": [
+        {
+           "plan": "heroku-postgresql"
+        }
+     ],
+    "repository": "https://github.com/StarkBotsIndustries/{GITHUB}",
+    "env": {
+      "TOKEN": {
+        "description": "Obtain a Telegram bot token by contacting @BotFather",
+        "required": true,
+        "value": ""
+      },
+      "OWNER_ID": {
+        "description": "Your Telegram ID",
+        "required": false,
+        "value": ""
+      }
+    }
+  }

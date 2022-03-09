@@ -1,0 +1,14 @@
+# ROADMAP
+
+# Start
+NAME -> Readme, app.json
+GITHUB -> Readme, app.json
+WORK -> Readme, app.json
+Project Name -> Cargo.toml, Procfile
+
+# Mid
+Code
+
+# End
+USERNAME -> Readme (bot username)
+Image -> app.json

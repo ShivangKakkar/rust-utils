@@ -57,7 +57,6 @@ lazy_static::lazy_static! {
 }
 
 pub fn error_handler(bot: &Bot, _: &Context, err: Error) -> GroupIteration {
-    // let lci = *LOG_CHAT_ID;
     let e = format!("an error occurred: {}", err);
     if *LOG_CHAT_ID == 0 {
         println!("{}", e);
